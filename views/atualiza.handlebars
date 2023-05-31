@@ -1,0 +1,56 @@
+    <div class="container-md">
+       
+        <h5 style="margin-top: 1.5rem;">Cadastrar - Agendamento de Potenciais Clientes</h5>
+        <p>Sistema utilizado para agendamento de serviços.</p>
+        {{#each post}}
+        {{#dataValues}}
+        <form action="/cadastrar" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="name" name="nome" class="form-control" id="nome" value="{{nome}}" >
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" name="telefone" class="form-control" id="telefone" placeholder="(XX)XXXXX-XXXX" value="{{telefone}}">
+            </div>
+            <div class="mb-3">
+                <label for="origem" class="form-label">Origem</label>
+                <select name="origem" id="origem" class="form-select">
+                    <option disable selected>{{#eq origem '2'}}Fixo{{else}}Celular{{/eq}}</option>
+                    <option value="1" >Celular</option>
+                    <option value="2" >Fixo</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Data do Contato</label>
+                <input class="form-control" type="date" name="date" id="date" value="{{data}}">
+            </div>
+            <div class="mb-3">
+                <label class="obs" for="obs">Observação</label>
+                <textarea name="obs" id="obs" cols="30" rows="4" class="form-control obs">{{observacao}}</textarea>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Cadastrar">
+            </div>
+        </form>
+        {{/dataValues}}
+        {{/each}}
+    </div>
+{{!-- 
+        <script>
+            const select = document.getElementById('origem')
+
+            function selecionar(origem){
+                
+                for(var i = 0; i < select.options.length; i++){
+
+                    if(select.options[i].value === origem){
+                        select.selectedIndex = i
+                        break
+                    }
+
+                }
+
+            }
+
+        </script> --}}
